@@ -1,0 +1,127 @@
+<div class="row">
+  <div class="row" tal:content="structure provider:plone.abovecontenttitle" />
+  <h1>Betrieblicher Hand- und Hautschutz der BG ETEM</h1>
+
+  <p>Dieses Informationsportal bietet Ihnen anhand Ihrer individuellen Angaben zu hautgefährdenden Tätigkeiten <b>selektive Produktempfehlungen</b>
+     für Schutzhandschuhe und Hautschutzmittel. Daneben finden Sie auch Hautpflege- und Hautreinigungsmittel sowie -desinfektionsmittel.
+     Die Suchergebnisse können in Vergleichstabellen dargestellt werden und umfassen ausführliche Produktinformationen sowie Bezugsquellenangaben.</p>
+
+  <p>Ihre Produktauswahl können Sie sofort in einen individuellen betrieblichen <b>Hand- und Hautschutzplan</b> übertragen lassen, 
+     der automatisch als Druckausgabedatei ausgefertigt wird. Allgemeine Informationen zum Hand- und Hautschutz ergänzen das Angebot 
+     dieses interaktiven Portals.</p>
+
+  <div class="row-eq-height">
+
+  <div style="margin-right:20px; padding:0px;" class="col-xs-6 col-md-4 panel panel-primary panel-siguv blau">
+  <div class="box-body">
+  <a class="boxlink col-xs-12" tal:attributes="href python:view.homeurl + '/taetigkeitform'">
+    <img class="img-responsive" src="icon_themen.jpg"/>
+    <h4 class="blau">Hand- und Hautschutzplan</h4>
+    <p>Starten Sie hier Ihre Produktrecherchen zum Hand- und Hautschutz auf Basis einer individuell zu beschreibenden 
+       arbeitsplatzbezogenen Tätigkeit, um diese in Ihren Hand- und Hautschutzplan übertragen zu lassen.</p>
+  </a>
+  </div>
+  </div>
+
+  <div style="margin-right:20px; padding:0px;" class="col-xs-6 col-md-4 panel panel-primary panel-siguv blau">
+  <div class="box-body">
+  <a class="boxlink col-xs-12" tal:attributes="href python:view.homeurl + '/gefaehrdung'">
+    <img class="img-responsive" src="symbol_schutzhandschuh.jpg"/>
+    <h4 class="blau">Schutzhandschuhe finden</h4>
+    <p>Selektieren Sie hier Ihre individuelle tätigkeits- und gefahrstoffspezifische Auswahl an Schutzhandschuhen. 
+       Sie können Ihre Wahl sofort in einen Hand- und Hautschutzplan übertragen lassen.</p>
+  </a>
+  </div>
+  </div>
+
+  <div style="margin-right:20px; padding:0px;" class="col-xs-6 col-md-4 panel panel-primary panel-siguv blau">
+  <div class="box-body">
+  <a class="boxlink col-xs-12" tal:attributes="href python:view.homeurl + '/hsfinden'">
+    <img class="img-responsive" src="symbol_hautschutz.jpg"/>
+    <h4 class="blau">Hautschutzmittel finden</h4>
+    <p>Selektieren Sie hier Ihre individuelle tätigkeits- und gefahrstoffspezifische Auswahl an Hautschutzmitteln. 
+       Sie können Ihre Wahl im weiteren Verlauf Ihrer Recherchen in einen Hand- und Hautschutzplan übertragen lassen.</p>
+  </a>
+  </div>
+  </div>
+
+  </div>
+
+  <div class="row-eq-height">
+
+  <div style="margin-right:20px; padding:0px;" class="col-xs-6 col-md-4 panel panel-primary panel-siguv blau">
+  <div class="box-body">
+  <a class="boxlink col-xs-12" tal:attributes="href python:view.homeurl + '/listhautreinigungsmittel'">
+    <img class="img-responsive" src="symbol_reinigung.jpg"/>
+    <h4 style="margin-left:10px;color:#51ae31;">Hautreinigungsmittel finden</h4>
+    <p>Selektieren Sie hier Ihre individuelle Auswahl an Hautreinigungsmitteln. Sie können Ihre Wahl im weiteren Verlauf 
+       Ihrer Recherchen in einen Hand- und Hautschutzplan übertragen lassen.</p>
+  </a>
+  </div>
+  </div>
+
+  <div style="margin-right:20px; padding:0px;" class="col-xs-6 col-md-4 panel panel-primary panel-siguv blau">
+  <div class="box-body">
+  <a class="boxlink col-xs-12" tal:attributes="href python:view.homeurl + '/listhautpflegemittel'">
+    <img class="img-responsive" src="symbol_pflege.jpg"/>
+    <h4 style="margin-left:10px;color:#d40f14;">Hautpflegemittel finden</h4>
+    <p>Selektieren Sie hier Ihre individuelle  Auswahl an Hautpflegemitteln. Sie können Ihre Wahl im weiteren Verlauf 
+       Ihrer Recherchen in einen Hand- und Hautschutzplan übertragen lassen.</p>
+  </a>
+  </div>
+  </div>
+
+  <div style="margin-right:20px; padding:0px;" class="col-xs-6 col-md-4 panel panel-primary panel-siguv blau">
+  <div class="box-body">
+  <a class="boxlink col-xs-12" tal:attributes="href python:view.homeurl + '/listdesinfektionsmittel'">
+    <img class="img-responsive" src="symbol_desinfektion.jpg"/>
+    <h4 style="margin-left:10px;color:#0095db;">Desinfektionsmittel finden</h4>
+    <p>Selektieren Sie hier Ihre individuelle  Auswahl an Desinfektionsmitteln. Sie können Ihre Wahl im weiteren Verlauf 
+       Ihrer Recherchen in einen Hand- und Hautschutzplan übertragen lassen.</p>
+  </a>
+  </div>
+  </div>
+
+  </div>
+
+  <div class="row-eq-height">
+
+  <div style="margin-right:20px; padding:0px;" class="col-xs-6 col-md-4 panel panel-primary panel-siguv blau">
+  <div class="box-body">
+  <a class="boxlink col-xs-12" tal:attributes="href python:view.homeurl + '/wissenswertes-zum-hand-und-hautschutz'">
+    <img class="img-responsive" src="icon_ordner_grau.jpg"/>
+    <h4 style="margin-left:10px;color:#555555;">Grundwissen Hand- und Hautschutz</h4>
+    <p>Die Haut ist ein Organ mit vielen Schutzfunktionen. Im beruflichen Alltag können jedoch Hautbelastungen auftreten, 
+       für die die natürliche Barrierefunktion der Haut nicht mehr ausreicht. Hauterkrankungen gehören zu den häufigsten 
+       berufsbedingten Erkrankungen.</p>
+  </a>
+  </div>
+  </div>
+
+  <div style="margin-right:20px; padding:0px;" class="col-xs-6 col-md-4 panel panel-primary panel-siguv blau">
+  <div class="box-body">
+  <a class="boxlink col-xs-12" tal:attributes="href python:view.homeurl + '/taetigkeiten'">
+    <img class="img-responsive" src="icon_ordner_grau.jpg"/>
+    <h4 style="margin-left:10px;color:#555555;">Hautgefährdende Tätigkeiten</h4>
+    <p>Starten Sie hier Ihre Produktrecherchen zum Hand- und Hautschutz auf Basis ausgewählter arbeitsplatzbezogener 
+       Tätigkeiten. Sie können Ihre Wahl im weiteren Verlauf Ihrer Recherchen in einen Hand- und Hautschutzplan übertragen lassen.</p>
+  </a>
+  </div>
+  </div>
+
+  <div style="margin-right:20px; padding:0px;" class="col-xs-6 col-md-4 panel panel-primary panel-siguv blau">
+  <div class="box-body">
+  <a class="boxlink col-xs-12" tal:attributes="href python:view.homeurl + '/produkte'">
+    <img class="img-responsive" src="icon_ordner_grau.jpg"/>
+    <h4 style="margin-left:10px;color:#555555;">Produktlisten</h4>
+    <p>Hier finden Sie nach Handelsnamen oder Hersteller sortierte Listen der in unserer Datenbank erfassten Schutz-, 
+       Reinigungs- und Pflegeprodukte.</p>
+  </a>
+  </div>
+  </div>
+
+
+
+  </div>
+
+</div>

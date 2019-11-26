@@ -1,0 +1,16 @@
+<div class="row">
+<h1>Produktvergleich</h1>
+<p class="documentDescription">Bitte vergleichen Sie die von Ihnen ausgewählten Produkte und setzen Sie dann die Bearbeitung fort.</p>
+<form tal:attributes="action view/formurl">
+<table class="table table-hover">
+    <!--<thead tal:define="tableheader python:view.vergleich[0]">
+      <th tal:repeat="head tableheader" tal:content="head"/>
+    </thead>-->
+    <tbody tal:define="zeilen python:view.vergleich">
+      <tr tal:repeat="zeile zeilen">
+        <td tal:repeat="entry zeile" tal:content="structure entry"/>
+      </tr>
+    </tbody>
+</table>
+<input name="choose" class="btn btn-primary" type="submit" value="In Hand- und Hautschutzplan übernehmen">
+</form>

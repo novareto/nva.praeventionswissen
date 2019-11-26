@@ -1,0 +1,37 @@
+<div class="row" tal:content="structure provider:plone.abovecontenttitle" />
+<div class="row">
+  <h1>Hautreinigungsmittel finden</h1>
+  <p class="documentDescription">Selektieren Sie hier Ihre individuelle Auswahl an Hautreinigungsmitteln. Sie können Ihre Wahl sofort in einen Hand- und Hautschutzplan übertragen lassen.</p>
+
+  <p class=" ">Die hier gelisteten Hautreinigungsmittel erfüllen die Kosmetikverordnung (EG) Nr. 1223/2009. Innerhalb dieser Liste können Sie Detailinformationen und Bezugsquellen aufrufen, nach bestimmten Eigenschaften filtern sowie Artikel zum Vergleich gegenüberstellen. Ihre Auswahl können Sie sofort in einen individuellen Hand- und Hautschutzplan übertragen lassen.</p>
+  <p class=" ">Bitte beachen Sie, dass es sich bei den ausgewiesenen Suchergebnissen um Empfehlungen handelt. Die praktische Eignung der Produkte hängt von Ihren individuellen Anforderungen an Reinigungswirkung und Verträglichkeit ab, weshalb der Portalbetreiber keine Gewähr für die erforderliche Wirksamkeit übernehmen kann.</p>
+
+  <h2>Liste der Hautreinigungsmittel</h2>
+  <p class="documentDescription"></p>
+
+  <table class="table table-striped">
+    <thead>
+      <th>Auswahl</th>
+      <th>Produktname</th>
+      <th>Bild</th>
+      <th>Hersteller</th>
+      <th>Anwendungsbereich</th>
+    </thead>
+    <form action="@@comparehautreinigung">
+    <tbody>
+      <tr tal:repeat="mittel view/hautreinigungsmittel">
+        <td><input class="form-control" type="checkbox" name="produkt" tal:attributes="value mittel/uid"></td>
+        <td><a href="" tal:attributes="href mittel/url" tal:content="mittel/title"/></td>
+        <td><span tal:condition="mittel/image" tal:replace="structure mittel/image"/></td>
+        <td><a href="" tal:attributes="href mittel/herstellerurl" tal:content="mittel/hersteller"/></td>
+        <td tal:content="mittel/anwendungsbereich"></td>
+      </tr>
+      <tr>
+        <td colspan="5">
+          <input name="compare" class="btn btn-default" type="submit" value="Produkte vergleichen">
+          <input name="choose" class="btn btn-primary" type="submit" value="In Hand- und Hautschutzplan übernehmen">
+        </td>
+    </tbody>
+    </form>
+  </table>
+</div>

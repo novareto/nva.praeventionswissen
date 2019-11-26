@@ -1,0 +1,43 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:grok="http://namespaces.zope.org/grok"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    i18n_domain="nva.praeventionswissen">
+
+  <interface interface=".interfaces.ISchutzhandschuhOrdner" />
+
+  <includeDependencies package="." />
+
+  <i18n:registerTranslations directory="locales" />
+
+  <grok:grok package="." />
+
+  <include package=".browser" />
+
+  <genericsetup:registerProfile
+      name="default"
+      title="nva.praeventionswissen"
+      directory="profiles/default"
+      description="Installs the nva.praeventionswissen add-on."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+
+  <genericsetup:importStep
+      name="nva.praeventionswissen-postInstall"
+      title="nva.praeventionswissen post_install import step"
+      description="Post install import step from nva.praeventionswissen"
+      handler=".setuphandlers.post_install">
+  </genericsetup:importStep>
+
+
+  <browser:page
+    for=".schutzhandschuh.ISchutzhandschuh"
+    name="edit"
+    class=".schutzhandschuh.EditForm"
+    permission="cmf.ModifyPortalContent"
+    />
+
+</configure>

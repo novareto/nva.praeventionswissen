@@ -1,0 +1,70 @@
+<div style="background-color:#eee;padding-left:10px;border:1px solid #ddd;" class="row" tal:condition="viewlet/available">
+<h4>Status Ihres Hand- und Hautschutzplans</h4>
+<div style="margin-bottom:10px" class="row">
+<span style="color:#f0ad4e;" class="glyphicon glyphicon-stop"/><span> Fehlende Angaben</span>
+<span style="margin-left:10px;color:#449d44" class="glyphicon glyphicon-stop"/><span> Angaben vollständig</span>
+<span style="margin-left:20px;color:#004994;background-color:#ffffff;" class="glyphicon glyphicon-unchecked"/><span> Optionale Angaben</span>
+</div>
+
+<ul class="nav nav-pills" role="tablist"
+    tal:define="taetigkeit viewlet/taetigkeit;
+                schutzhandschuhe viewlet/schutzhandschuhe;
+                hautschutz viewlet/hautschutz;
+                desinfektion viewlet/desinfektion;
+                hautreinigung viewlet/hautreinigung;
+                hautpflege viewlet/hautpflege">
+  <li role="presentation"><a tal:attributes="href taetigkeit/url; class taetigkeit/btn" role="button">
+    Tätigkeit </a></li>
+
+  <li role="presentation"><a tal:attributes="href schutzhandschuhe/url; class schutzhandschuhe/btn" role="button">
+    Schutzhandschuhe </a></li>
+
+  <li role="presentation"><a tal:attributes="href hautschutz/url; class hautschutz/btn" role="button">
+    Hautschutz </a></li>
+
+  <li role="presentation"><a tal:attributes="href hautreinigung/url; class hautreinigung/btn"  role="button">
+    Hautreinigung </a></li>
+
+  <li role="presentation"><a tal:attributes="href hautpflege/url; class hautpflege/btn" role="button">
+    Hauptpflege </a></li>
+
+  <li role="presentation"><a tal:attributes="href desinfektion/url; class desinfektion/btn" role="button">
+    Desinfektion </a></li>
+</ul>
+
+  <div class="row">
+  <div style="margin-top:10px" class="col-md-6 col-xs-12">
+  <p tal:condition="viewlet/ready"><a tal:attributes="href python:viewlet.homeurl + '/hautschutzplan'">
+    <span class="glyphicon glyphicon-list-alt"/> Hautschutzplan ansehen</a></p>
+
+  <p tal:condition="not:viewlet/ready"><a href="#" data-toggle="modal" data-target="#myModal">
+    <span class="glyphicon glyphicon-list-alt"/> Hautschutzplan ansehen</a></p>
+
+  <p><a tal:attributes="href python:viewlet.homeurl + '/@@deldata'">
+    <span class="glyphicon glyphicon-trash"/> Angaben zum Hautschutzplan löschen</a></p>
+  </div>
+  </div>
+	<!-- Modal -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		<h4 class="modal-title" id="myModalLabel">Ihr Hautschutzplan</h4>
+	      </div>
+	      <div class="modal-body">
+		<p>Ihr Hautschutzplan ist noch nicht vollständig.<br/>
+                Notwendig dafür sind folgende Angaben:</p>
+                <ul>
+                 <li>Beschreibung der hautgefährdenden Tätigkeit</li>
+                 <li>Auswahl eines Hautschutzproduktes (Schutzhandschuh oder Hautschutzmittel)</li>
+                </ul>
+	      </div>
+	      <div class="modal-footer">
+		<button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+</div>

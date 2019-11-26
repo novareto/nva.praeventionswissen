@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<object name="portal_types" meta_type="Plone Types Tool">
+  <object name="Schutzhandschuh" meta_type="Dexterity FTI"/>
+  <object name="Taetigkeit" meta_type="Dexterity FTI"/>
+  <object name="Hautreinigungsmittel" meta_type="Dexterity FTI"/>
+  <object name="Hautpflegemittel" meta_type="Dexterity FTI"/>
+  <object name="Hautschutzmittel" meta_type="Dexterity FTI"/>
+  <object name="Gefahrstoff" meta_type="Dexterity FTI"/>
+  <object name="Desinfektionsmittel" meta_type="Dexterity FTI"/>
+</object>

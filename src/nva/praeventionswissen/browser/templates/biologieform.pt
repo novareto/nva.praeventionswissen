@@ -1,0 +1,109 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="sits">
+
+      <metal:slot fill-slot="css_slot">
+          <style media="all" type="text/css">
+
+            .schema-browser {
+                    border-collapse: collapse;
+            }
+
+            .schema-browser td,
+            .schema-browser th {
+                    vertical-align: top;
+                    border: 1px solid #aaa;
+                    padding: 0.5em;
+                    text-align: left;
+            }
+
+            .default {
+                    color: green;
+            }
+
+            .mandatory {
+                    color: red;
+            }
+          </style>
+      </metal:slot>
+
+<body>
+    <metal:main fill-slot="main">
+         <div class="row" tal:content="structure provider:plone.abovecontenttitle" />
+         <div class="row">
+         <h2 tal:content="view/formtitle"> Tätigkeit mit vorwiegend biologischen Gefährdungen </h2>
+         <p tal:content="view/formdescription" class="documentDescription"> </p>
+         <h3>Hand -und Hautschutzprodukte für diese Tätigkeit suchen</h3>
+         <form enctype="multipart/form-data" method="post" novalidate="novalidate"
+               action="." tal:attributes="action view/formurl">
+
+              <div tal:define="widget python: view.fieldWidgets.get('form.field.biologie')">
+                   <div metal:use-macro="here/@@formmacros/macros/bootstrapfields" />
+              </div>
+
+              <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                <div class="panel panel-default">
+                  <div class="panel-heading" role="tab" id="headingOne">
+                    <h4 class="panel-title">
+                      <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                      Weitere Gefährdungen zu dieser Tätigkeit auswählen (optional):
+                      </a>
+                    </h4>
+                  </div>
+                  <div id="collapseOne" class="panel-collapse collapse" tal:attributes="class view/panelclassone" role="tabpanel" aria-labelledby="headingOne">
+                    <div class="panel-body">
+
+                      <div tal:define="widget python: view.fieldWidgets.get('form.field.gefahrstoffe')">
+                        <div metal:use-macro="here/@@formmacros/macros/bootstrapfields" />
+                      </div>
+
+                      <div tal:define="widget python: view.fieldWidgets.get('form.field.mechanik')">
+                        <div metal:use-macro="here/@@formmacros/macros/bootstrapcheckbox" />
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div> 
+
+              <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                <div class="panel panel-default">
+                  <div class="panel-heading" role="tab" id="headingTwo">
+                    <h4 class="panel-title">
+                      <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                      Weitere Anforderungen an das Hand- und Hautschutzprodukt auswählen (optional):
+                      </a>
+                    </h4>
+                  </div>
+                  <div id="collapseTwo" class="panel-collapse collapse" tal:attributes="class view/panelclasstwo" role="tabpanel" aria-labelledby="headingTwo">
+                    <div class="panel-body">
+
+                      <div tal:define="widget python: view.fieldWidgets.get('form.field.materialdicke')">
+                        <div metal:use-macro="here/@@formmacros/macros/bootstrapfields" />
+                      </div>
+
+                      <div tal:define="widget python: view.fieldWidgets.get('form.field.handschuhlaenge')">
+                        <div metal:use-macro="here/@@formmacros/macros/bootstrapfields" />
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+ 
+              <div class="row">&nbsp;</div>
+
+           <div class="actions">
+             <span class="action" tal:repeat="widget view/actionWidgets">
+             <tal:widget tal:content="structure widget/render" />
+             </span>
+           </div>
+
+         </form>
+         </div>
+
+    </metal:main>
+</body>
+</html>

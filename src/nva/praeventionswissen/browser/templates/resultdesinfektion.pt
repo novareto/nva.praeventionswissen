@@ -1,0 +1,23 @@
+<div class="row" tal:content="structure provider:plone.abovecontenttitle" />
+<div class="row">
+  <h2>Desinfektionsmittel</h2>
+  <p class="documentDescription">Für Ihren Hand- und Hautschutzplan haben Sie folgende Desinfektionsmittel ausgewählt.</p>
+
+  <table class="table table-striped">
+    <thead>
+      <th>Produktname</th>
+      <th>Bild</th>
+      <th>Hersteller</th>
+      <th>Anwendungsbereich</th>
+    </thead>
+    <tbody>
+      <tr tal:repeat="mittel view/desinfektionsmittel">
+        <td><a href="" tal:attributes="href mittel/url" tal:content="mittel/title"/></td>
+        <td><span tal:condition="mittel/image" tal:replace="structure mittel/image"/></td>
+        <td><a href="" tal:attributes="href mittel/herstellerurl" tal:content="mittel/hersteller"/></td>
+        <td tal:content="mittel/anwendungsbereich"></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<a tal:attributes="href python:context.absolute_url() + '/@@listdesinfektionsmittel'" class="btn btn-primary" role="button">Aktualisieren</a>

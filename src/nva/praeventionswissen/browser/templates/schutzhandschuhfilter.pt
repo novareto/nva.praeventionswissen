@@ -1,0 +1,27 @@
+<div tal:condition="viewlet/available" class="row" tal:define="herstellerliste viewlet/hersteller">
+
+     <h4>Produkte filtern</h4>
+
+	<div class="btn-group">
+	  <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	    Hersteller <span class="caret"></span>
+	  </button>
+	  <ul class="dropdown-menu">
+		   <li><a tal:attributes="href python:context.absolute_url()"><b>alle anzeigen</b></a></li>
+		   <li tal:repeat="eintrag herstellerliste">
+		     <a tal:attributes="href python:context.absolute_url()+'?Hersteller='+eintrag[0]"
+			tal:content="python: eintrag[1]"/></li>
+	  </ul>
+	</div>
+
+        <div class="btn-group">
+          <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Gefährdung <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu">
+                   <li><a tal:attributes="href python:context.absolute_url()"><b>alle anzeigen</b></a></li>
+                   <li><a tal:attributes="href python:context.absolute_url()+'?Chemiekalienschutz=True'">chemisch/biologisch</a></li>
+                   <li><a tal:attributes="href python:context.absolute_url()+'?Mechanik=True&Chemiekalienschutz=False'">mechanisch</a></li>
+          </ul>
+        </div>
+</div>

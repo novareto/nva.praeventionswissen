@@ -1,0 +1,62 @@
+<div class="row" tal:content="structure provider:plone.abovecontenttitle" />
+<div class="row">
+  <h1>Ergebnisse Ihrer Suche</h1>
+  <p class="documentDescription">Die Ergebnisse wurden nach der höchsten niedrigsten Durchbruchzeit für die ausgewählten Chemikalien sortiert.</p>
+  <p>Für einen Produktvergleich markieren Sie bitte die gewünschten Produkte</p>
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Auswahl</th>
+          <th>Produktname</th>
+          <th>Bild</th>
+          <th>
+          <form action="@@chemieergebnisse">
+          <input type="hidden" name="gefahrstoffe" tal:attributes="value view/gefahrstoffe">
+          <span tal:repeat="formentry view/resultform">
+              <input type="hidden" tal:attributes="name formentry/name; value formentry/value">
+          </span>
+          <div tal:condition="python: view.produktlist" class="dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" 
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    Gefahrstoffschutz<span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" 
+                tal:define="stoffe python:view.produktlist[0].get('gefahrstoffe')">
+              <li style="color:#004994;" tal:repeat="stoff stoffe">
+                <input type="radio" id="mc" name="sortgefahrstoff" tal:attributes="value stoff/gefahrstoffurl">
+                <span tal:content="stoff/gefahrstoff">Gefahrstoff</span>
+              </li>
+              <li role="separator" class="divider"></li>
+              <li><input type="submit" value="sortieren" class="btn btn-primary"></li>
+            </ul>
+          </div>
+          </form>
+
+          </th>
+        </tr>
+      </thead>
+      <form action="@@compareproducts">
+      <tbody>
+        <tr tal:repeat="entry view/produktlist">
+          <td><input class="form-control" type="checkbox" name="produkt" tal:attributes="value entry/uid"></td>
+          <td><a tal:attributes="href entry/url" tal:content="entry/title"/></td>
+          <td tal:content="structure entry/image"></td>
+          <td>
+            <ul>
+              <li tal:repeat="stoff entry/gefahrstoffe">
+                <span tal:content="stoff/gefahrstoff"/> (<span tal:content="stoff/durchbruch"/>)
+              </li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="5">
+            <input name="compare" class="btn btn-default" type="submit" value="Produkte vergleichen">
+            <input name="choose" class="btn btn-primary" type="submit" value="In Hand- und Hautschutzplan übernehmen">
+          </td>
+        </tr>
+      </tbody>
+      </form>
+    </table>
+</div>

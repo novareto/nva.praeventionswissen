@@ -1,0 +1,12 @@
+<table class="table table-striped">
+ <thead>
+   <th>Gefahrstoff</th>
+   <th>Hersteller</th>
+ </thead>
+ <tbody>
+   <tr tal:repeat="entry view/objlist">
+     <td tal:content="entry/gefahrstoff"/>
+     <td tal:content="entry/hersteller"/>
+   </tr>
+  </tbody>
+</table>

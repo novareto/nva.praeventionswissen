@@ -1,0 +1,35 @@
+<div class="row" tal:content="structure provider:plone.abovecontenttitle" />
+<div class="row">
+  <h2>Hautschutzmittel finden</h2>
+  <p class="documentDescription">Selektieren Sie hier Ihre individuelle tätigkeits- und gefahrstoffspezifische Auswahl an Hautschutzmitteln. Sie können Ihre Wahl sofort in einen Hand- und Hautschutzplan übertragen lassen.</p>
+
+  <p>Für die hier gelisteten Hautschutzmittel wurden von den Herstellern die erforderlichen Wirksamkeitsnachweise erbracht und erfüllen die Kosmetikverordnung (EG) Nr. 1223/2009. Folgen Sie den Abfrageformularen und Sie erhalten je nach Ihren Angaben zu hautgefährdenden Tätigkeiten und/oder Gefahrstoffkontakt eine Liste mit entsprechenden Produktempfehlungen. Innerhalb dieser Liste können Sie Detailinformationen und Bezugsquellen aufrufen, nach bestimmten Eigenschaften filtern sowie Artikel zum Vergleich gegenüberstellen. Ihre Auswahl können Sie sofort in einen individuellen Hand- und Hautschutzplan übertragen lassen.</p>
+
+  <p>Bitte beachten Sie, dass es sich bei den ausgewiesenen Suchergebnissen um Empfehlungen handelt, die aus Ihren Angaben zu hautgefährdender Tätigkeit und Gefahrstoffkontakt resultieren. Die tatsächliche praktische Eignung der Produkte hängt demnach von Ihren Angaben ab, weshalb der Portalbetreiber keine Gewähr für die erforderliche Schutzwirkung übernehmen kann.</p>
+
+  <table class="table table-striped">
+    <thead>
+      <th>Auswahl</th>
+      <th>Produktname</th>
+      <th>Bild</th>
+      <th>Hersteller</th>
+      <th>Wirkung</th>
+    </thead>
+    <form action="@@comparehautschutz">
+    <tbody>
+      <tr tal:repeat="mittel view/hautschutzmittel">
+        <td><input class="form-control" type="checkbox" name="produkt" tal:attributes="value mittel/uid"></td>
+        <td><a href="" tal:attributes="href mittel/url" tal:content="mittel/title"/></td>
+        <td><span tal:condition="mittel/image" tal:replace="structure mittel/image"/></td>
+        <td><a href="" tal:attributes="href mittel/herstellerurl" tal:content="mittel/hersteller"/></td>
+        <td tal:content="mittel/cat"></td>
+      </tr>
+      <tr>
+        <td colspan="5">
+          <input name="compare" class="btn btn-default" type="submit" value="Produkte vergleichen">
+          <input name="choose" class="btn btn-primary" type="submit" value="In Hand- und Hautschutzplan übernehmen">
+        </td>
+    </tbody>
+    </form>
+  </table>
+</div>

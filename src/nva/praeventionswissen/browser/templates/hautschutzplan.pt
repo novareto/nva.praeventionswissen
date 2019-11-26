@@ -1,0 +1,132 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="sits">
+
+      <metal:slot fill-slot="css_slot">
+          <style media="all" type="text/css">
+
+            .schema-browser {
+                    border-collapse: collapse;
+            }
+
+            .schema-browser td,
+            .schema-browser th {
+                    vertical-align: top;
+                    border: 1px solid #aaa;
+                    padding: 0.5em;
+                    text-align: left;
+            }
+
+            .default {
+                    color: green;
+            }
+
+            .mandatory {
+                    color: red;
+            }
+          </style>
+      </metal:slot>
+
+<body>
+    <metal:main fill-slot="main">
+         <div class="row" tal:content="structure provider:plone.abovecontenttitle" />
+         <div class="row">
+         <h2 tal:content="view/formtitle"> Hand- und Hautschutzplan </h2>
+         <p tal:content="view/formdescription" class="documentDescription"> </p>
+         <form enctype="multipart/form-data" method="post" novalidate="novalidate"
+               action="." tal:attributes="action view/formurl">
+
+              <div tal:define="widget python: view.fieldWidgets.get('form.field.verantwortung')">
+                   <div metal:use-macro="here/@@formmacros/macros/bootstrapfields" />
+              </div>
+
+
+              <div tal:define="widget python: view.fieldWidgets.get('form.field.stand')">
+                   <div metal:use-macro="here/@@formmacros/macros/bootstrapfields" />
+              </div>
+
+              <div tal:define="widget python: view.fieldWidgets.get('form.field.arbeitsbereich')">
+                   <div metal:use-macro="here/@@formmacros/macros/bootstrapfields" />
+              </div>
+
+              <p style="font-size:110%;"><b>Hautgefährdende Tätigkeit:</b> <span tal:replace="view/taetigkeit"/></p>
+              <p><span tal:replace="view/beschreibung"/></p>
+
+              <h3>Schutzmaßnahmen</h3>
+              <table class="table table-striped">
+                <thead>
+                  <th class="row-15">Was</th>
+                  <th class="row-20">Wann</th>
+                  <th>Womit</th>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><img width="100%" class="img-responsive" src="gebot_hautschutz.jpg"/><br/>Hautschutz</td>
+                    <td><b>VOR</b> Arbeitsbeginn<br/>(nach Pausen)</td>
+                    <td><ul><li tal:repeat="mittel view/hautschutz">
+                      <a tal:attributes="href mittel/url" tal:content="mittel/title"></a>
+                      <a tal:attributes="href mittel/herstellerurl">(<span tal:replace="mittel/hersteller"/>)</a></li></ul></td>
+                  </tr>
+                  <tr>
+                    <td><img width="100%" class="img-responsive" src="gebot_handschutz.jpg"/><br/>Handschuhe</td>
+                    <td><b>WÄHREND</b> der Arbeit<br/>(bei chemischen,<br/>mechanischen, biolo-<br/>gischen Gefährdungen</td>
+                    <td><ul><li tal:repeat="mittel view/schutzhandschuhe">
+                      <a tal:attributes="href mittel/url" tal:content="mittel/title"></a>
+                      <a tal:attributes="href mittel/herstellerurl">(<span tal:replace="mittel/hersteller"/>)</a></li></ul></td>
+                  </tr>
+                  <tr>
+                    <td><img width="100%" class="img-responsive" src="gebot_desinfektion.jpg"/><br/>Desinfektion</td>
+                    <td>Händedesinfektion<br/>(z.B. bei Kontakt mit<br/>biologischen  Arbeits-<br/>stoffen</td>
+                    <td><ul><li tal:repeat="mittel view/desinfektion">
+                      <a tal:attributes="href mittel/url" tal:content="mittel/title"></a>
+                      <a tal:attributes="href mittel/herstellerurl">(<span tal:replace="mittel/hersteller"/>)</a></li></ul></td>
+                  </tr>
+                  <tr>
+                    <td><img width="100%" class="img-responsive" src="gebot_hautreinigung.jpg"/><br/>Hautreinigung</td>
+                    <td><b>WÄHREND</b> der Arbeit<br/>(vor Pausen und zum Arbeitsschluss)</td>
+                    <td><ul><li tal:repeat="mittel view/hautreinigung">
+                      <a tal:attributes="href mittel/url" tal:content="mittel/title"></a>
+                      <a tal:attributes="href mittel/herstellerurl">(<span tal:replace="mittel/hersteller"/>)</a></li></ul></td>
+                  </tr>
+                  <tr>
+                    <td><img width="100%" class="img-responsive" src="gebot_hautschutz.jpg"/><br/>Hautpflege</td>
+                    <td><b>NACH</b> der Arbeit<br/>(nach dem letzten<br/>Händewaschen)</td>
+                    <td><ul><li tal:repeat="mittel view/hautpflege">
+                      <a tal:attributes="href mittel/url" tal:content="mittel/title"></a>
+                      <a tal:attributes="href mittel/herstellerurl">(<span tal:replace="mittel/hersteller"/>)</a></li></ul></td>
+                  </tr>
+                </tbody>
+              </table>
+
+
+              <div tal:define="widget python: view.fieldWidgets.get('form.field.information')">
+                   <div metal:use-macro="here/@@formmacros/macros/bootstrapfields" />
+              </div>
+
+
+              <div tal:define="widget python: view.fieldWidgets.get('form.field.telefon')">
+                   <div metal:use-macro="here/@@formmacros/macros/bootstrapfields" />
+              </div>
+
+              <div tal:define="widget python: view.fieldWidgets.get('form.field.lieferant')">
+                   <div metal:use-macro="here/@@formmacros/macros/bootstrapfields" />
+              </div>
+
+              <div tal:define="widget python: view.fieldWidgets.get('form.field.tel_lieferant')">
+                   <div metal:use-macro="here/@@formmacros/macros/bootstrapfields" />
+              </div>
+
+
+           <div class="actions">
+             <span class="action" tal:repeat="widget view/actionWidgets">
+             <tal:widget tal:content="structure widget/render" />
+             </span>
+           </div>
+
+         </form>
+         </div>
+
+    </metal:main>
+</body>
+</html>

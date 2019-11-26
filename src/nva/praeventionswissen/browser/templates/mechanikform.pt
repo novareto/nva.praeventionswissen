@@ -1,0 +1,79 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="sits">
+
+      <metal:slot fill-slot="css_slot">
+          <style media="all" type="text/css">
+
+            .schema-browser {
+                    border-collapse: collapse;
+            }
+
+            .schema-browser td,
+            .schema-browser th {
+                    vertical-align: top;
+                    border: 1px solid #aaa;
+                    padding: 0.5em;
+                    text-align: left;
+            }
+
+            .default {
+                    color: green;
+            }
+
+            .mandatory {
+                    color: red;
+            }
+          </style>
+      </metal:slot>
+
+<body>
+    <metal:main fill-slot="main">
+         <div class="row" tal:content="structure provider:plone.abovecontenttitle" />
+         <div class="row">
+         <h2 tal:content="view/formtitle"> Tätigkeit mit mechanischen Gefährdungen </h2>
+         <p class="documentDescription" tal:content="view/formdescription"> Hand- und Hautschutzprodukte für diese Tätigkeit suchen. </p>
+         <form enctype="multipart/form-data" method="post" novalidate="novalidate"
+               action="." tal:attributes="action view/formurl">
+
+              <h3> Folgende mechanische Beständigkeiten muss der gesuchte Schutzhandschuh aufweisen: </h3>
+
+              <div tal:define="widget python: view.fieldWidgets.get('form.field.abrieb')">
+                   <div metal:use-macro="here/@@formmacros/macros/bootstrapfields" />
+              </div>
+
+              <div tal:define="widget python: view.fieldWidgets.get('form.field.schnittcoup')">
+                   <div metal:use-macro="here/@@formmacros/macros/bootstrapfields" />
+              </div>
+
+              <div tal:define="widget python: view.fieldWidgets.get('form.field.riss')">
+                   <div metal:use-macro="here/@@formmacros/macros/bootstrapfields" />
+              </div>
+
+              <div tal:define="widget python: view.fieldWidgets.get('form.field.stick')">
+                   <div metal:use-macro="here/@@formmacros/macros/bootstrapfields" />
+              </div>
+
+              <div tal:define="widget python: view.fieldWidgets.get('form.field.schnittiso')">
+                   <div metal:use-macro="here/@@formmacros/macros/bootstrapfields" />
+              </div>
+
+              <div tal:define="widget python: view.fieldWidgets.get('form.field.stoss')">
+                   <div metal:use-macro="here/@@formmacros/macros/bootstrapcheckbox" />
+              </div>
+ 
+              <div class="row">&nbsp;</div>
+
+           <div class="actions">
+             <span class="action" tal:repeat="widget view/actionWidgets">
+             <tal:widget tal:content="structure widget/render" />
+             </span>
+           </div>
+
+         </form>
+         </div>
+
+    </metal:main>
+</body>
+</html>

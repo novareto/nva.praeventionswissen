@@ -1,0 +1,344 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:metal="http://xml.zope.org/namespaces/metal"
+  xmlns:tal="http://xml.zope.org/namespaces/tal"
+  xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+  metal:use-macro="context/main_template/macros/master">
+<head>
+
+  <metal:cssslot fill-slot="style_slot">
+      <link rel="stylesheet" type="text/css"
+        tal:define="navroot context/@@plone_portal_state/navigation_root_url"
+        tal:attributes="href string:${navroot}/++resource++ukbg.medienportal/css/medien.css"
+        />
+  </metal:cssslot>
+
+  <metal:javascriptslot fill-slot="javascript_head_slot"
+      tal:define="navroot context/@@plone_portal_state/navigation_root_url">
+    <script tal:attributes="src string:${navroot}/++resource++ukbg.medienportal/js/medien.js"></script>
+  </metal:javascriptslot>
+
+</head>
+
+
+  <metal:block fill-slot="content-core">
+	<div class="mp-wrapper">
+
+		<div class="row">
+			<div class="article-image col-lg-3 col-sm-3 col-xs-3">
+            <ul class="list-inline">
+                  <li data-toggle="modal" data-target="#imageModal"><a href="#myGallery" data-slide-to="0"><img class="img-thumbnail mp-preview" 
+                      tal:attributes="src python:view.images[0]"></a></li>
+		  <li class="col-lg-4 col-sm-4 col-xs-1 mini-img" tal:repeat="image view/images">
+                    <img class="img-thumbnail" tal:attributes="src image"></li>
+                <!--end of thumbnails-->
+            </ul>
+            
+            <!--begin modal window-->
+            <div class="modal fade" id="imageModal">
+            <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+            <div class="pull-left"></div>
+            <button type="button" class="close" data-dismiss="modal" title="Close"> <span class="glyphicon glyphicon-remove"></span></button>
+            </div>
+            <div class="modal-body">
+
+            <!--begin carousel-->
+            <div id="myGallery" class="carousel slide" data-interval="false">
+            <div tal:condition="view/images" class="carousel-inner">
+            <div class="item active"> <img tal:attributes="src python:view.images[0]" alt="item0">
+            <div class="carousel-caption">
+            <h3>Heading 3</h3>
+            <p>Slide 0  description.</p>
+            </div>
+            </div>
+            <div tal:repeat="image python:view.images[1:]" class="item"> <img tal:attributes="src image" alt="item1">
+            <div class="carousel-caption">
+            <h3>Heading 3</h3>
+            <p>Slide 1 description.</p>
+            </div>
+            </div>
+            <!--end carousel-inner--></div>
+            <!--Begin Previous and Next buttons-->
+            <a class="left carousel-control" href="#myGallery" role="button" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left"></span></a> 
+            <a class="right carousel-control" href="#myGallery" role="button" data-slide="next"> <span class="glyphicon glyphicon-chevron-right"></span></a>
+            <!--end carousel--></div>
+
+            <!--end modal-body--></div>
+            <div class="modal-footer">
+            <div class="pull-left">
+            <small>Photographs by <a href="https://www.bgetem.de/" target="new">https://www.bgetem.de/</a></small>
+            </div>
+            <button class="btn-sm close" type="button" data-dismiss="modal">Close</button>
+            <!--end modal-footer--></div>
+            <!--end modal-content--></div>
+            <!--end modal-dialoge--></div>
+            <!--end myModal-->></div>
+                                    </div>
+				    <div class="mp-new-section col-lg-6 col-xs-12">
+                                        <div class="col-xs-12" tal:condition="view/hersteller">
+                                                <p class="col-lg-4 col-sm-2 col-xs-3"><b>Hersteller:</b></p>
+                                                <p class="col-lg-8 col-sm-6 col-xs-9">
+                                                  <a tal:attributes="href view/hersteller_url" tal:content="view/hersteller"></a></p>
+                                        </div>
+                                        <div class="col-xs-12" tal:condition="view/aussenmaterial">
+						<p class="col-lg-4 col-sm-2 col-xs-3"><b>Außenmaterial:</b></p>
+                                        	<p class="col-lg-8 col-sm-6 col-xs-9" tal:content="view/aussenmaterial"></p>
+					</div>
+                                        <div class="col-xs-12" tal:condition="view/innenmaterial">
+						<p class="col-lg-4 col-sm-2 col-xs-3"><b>Innenmaterial:</b></p>
+                                        	<p class="col-lg-8 col-sm-6 col-xs-9" tal:content="view/innenmaterial"></p>
+					</div>
+                                        <div class="col-xs-12" tal:condition="view/innenausfuehrung">
+						<p class="col-lg-4 col-sm-2 col-xs-3"><b>Innenausführung:</b></p>
+                                        	<p class="col-lg-8 col-sm-6 col-xs-9" tal:content="view/innenausfuehrung"></p>
+					</div>
+                                        <div class="col-xs-12" tal:condition="view/profilierung">
+						<p class="col-lg-4 col-sm-2 col-xs-3"><b>Profilierung:</b></p>
+                                        	<p class="col-lg-8 col-sm-6 col-xs-9" tal:content="view/profilierung"></p>
+					</div>
+                                        <div class="col-xs-12" tal:condition="view/schichtstaerke">
+                                                <p class="col-lg-4 col-sm-2 col-xs-3"><b>Schichtstärke:</b></p>
+                                                <p class="col-lg-8 col-sm-6 col-xs-9" tal:content="view/schichtstaerke"></p>
+                                        </div>
+                                        <div class="col-xs-12" tal:condition="view/gesamtlaenge">
+                                                <p class="col-lg-4 col-sm-2 col-xs-3"><b>Gesamtlänge:</b></p>
+                                                <p class="col-lg-8 col-sm-6 col-xs-9" tal:content="view/gesamtlaenge"></p>
+                                        </div>
+                                    </div>
+
+
+
+
+                                    <div class="mp-price-table col-lg-3 col-sm-12 col-xs-12">
+                                       <div class="list-group">
+                                          <p class="list-group-item disabled">Hand- und Hautschutzplan</p>
+                                            <div class="list-group-item">
+                                                <p class="mp-order-info">Sie können den Schutzhandschuh hier in Ihren Hand- und Hautschutzplan
+                                                  übernehmen.</p>
+                                                <div tal:condition="not: view/hhplan" class="mp-wrapper">
+                                                        <div class="row mp-new-section">
+                                                                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                                                        <div class="panel panel-accordion">
+                                                                                <div class="panel-heading-inverse" role="tab" id="heading1">
+                                                                                        <a name="section-1"></a>
+                                                                                        <h4 class="panel-title-inverse">
+                                                                                                <a role="button" data-parent="#accordion" href="#collapse1" aria-expanded="false" tal:attributes="href view/addurl" class="collapsed">Übernehmen</a>
+                                                                                        </h4>
+                                                                                </div>
+                                                                                <div id="collapse1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading1" aria-expanded="false">
+                                                                                </div>
+                                                                        </div>
+                                                                </div>
+                                                        </div>
+                                                </div>
+                                                <p tal:condition="view/hhplan">
+                                                  <span class="glyphicon glyphicon-ok" aria-hidden="true"></span><em>bereits übernommen</em></p>
+                                                </div>
+                                          </div>
+                                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                    <!--<div class="col-lg-2 col-sm-3 col-xs-6">
+                                      <img class="img-responsive" tal:repeat="img view/symbolliste" 
+                                                                              tal:attributes="src string:${view/symbolurl}${img}">
+                                    </div>--> 
+                                    <div class="col-lg-12 col-sm-12 col-xs-12">
+                                        <hr class="media-default">
+                                        <!--<h3 class="mp-headline">Produkteigenschaften</h3>-->
+                                        <h2>Schutzfunktionen des Handschuhs</h2>
+
+
+
+
+	<div>
+
+	  <!-- Nav tabs -->
+          <div style="margin-bottom: 15px;">
+	  <ul class="nav nav-tabs siguv-tabs orange" role="tablist">
+	    <li tal:condition="view/tabchemie" role="presentation" class="active">
+              <a style="padding-left:25px; margin-bottom:0px !important;" href="#home" aria-controls="home" role="tab" 
+                 data-toggle="tab">Gefahrstoffschutz</a>
+            </li>
+	    <li tal:condition="view/tabmechanik" role="presentation">
+              <a style="padding-left:25px; margin-bottom:0px !important;" href="#profile" aria-controls="profile" role="tab" 
+                 data-toggle="tab">Mechanischer Schutz</a>
+            </li>
+	  </ul>
+          </div>
+
+	  <!-- Tab panes -->
+	  <div class="tab-content">
+	    <div tal:condition="view/tabchemie" role="tabpanel" class="tab-pane active" tal:attributes="class view/tabchemie" id="home">
+               <div class="row">
+		  <div class="row-eq-height">
+
+			  <div tal:condition="python: view.symbol374_2003_C and not view.symbol374_2016_C" 
+                               class="col-xs-6 col-md-2 panel panel-primary panel-siguv blau">
+			  <div class="box-body">
+                            <p style="text-align:center;padding-top:5px">EN 374:2003</p>			  
+			    <img class="img-responsive" tal:attributes="src string:${view/symbolurl}${view/symbol374_2003_C}">
+                            <p style="text-align:center;font-weight:bold" tal:condition="view/chemikalienliste" 
+                               tal:content="view/chemikalienliste"/>
+                            <p tal:condition="not: view/chemikalienliste">&nbsp;</p>
+                            <p style="padding-left:10px">Schutz gegen Chemikalien</p>
+			  </div>
+			  </div>
+
+			  <div tal:condition="python: view.symbol374_2003_B and not view.symbol374_2016_B" 
+                               class="col-xs-6 col-md-2 panel panel-primary panel-siguv blau">
+			  <div class="box-body">
+                            <p style="text-align:center;padding-top:5px">EN 374:2003</p>
+			    <img class="img-responsive" tal:attributes="src string:${view/symbolurl}${view/symbol374_2003_B}"/>
+                            <p>&nbsp;</p>
+                            <p style="padding-left:10px">Schutz gegen Mikroorganismen (Bakterien und Pilze)</p>
+			  </div>
+			  </div>
+
+			  <div tal:condition="view/symbol374_2016_C" class="col-xs-6 col-md-2 panel panel-primary panel-siguv blau">
+			  <div class="box-body">
+                            <p style="text-align:center;padding-top:5px" tal:content="view/typ374"/>
+			    <img class="img-responsive" tal:attributes="src string:${view/symbolurl}${view/symbol374_2016_C}"/>
+                            <p style="text-align:center;font-weight:bold" tal:condition="view/chemikalienliste" 
+                               tal:content="view/chemikalienliste"/> 
+                            <p style="padding-left:10px">Schutzhandschuhe gegen Chemikalien</p>
+			  </div>
+			  </div>
+
+                          <div tal:condition="view/symbol374_2016_B" class="col-xs-6 col-md-2 panel panel-primary panel-siguv blau">
+                          <div class="box-body">
+                            <p style="text-align:center;padding-top:5px">EN 374-5:2016</p>
+                            <img class="img-responsive" tal:attributes="src string:${view/symbolurl}${view/symbol374_2016_B}"/>
+                            <p style="text-align:center;font-weight:bold" tal:condition="view/virus" tal:content="view/virus"/> 
+                            <p style="text-align:center;font-weight:bold" tal:condition="not: view/virus">&nbsp;</p>
+                            <p style="padding-left:10px">Schutzhandschuhe gegen Mikroorganismen</p>
+                          </div>
+                          </div>
+
+			</div>
+
+                      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#GefahrstoffTabelle" 
+                              aria-expanded="false" aria-controls="Gefahrstofftabelle">Liste anzeigen</button>
+                      <div class="collapse" id="GefahrstoffTabelle">
+                        <div class="well">
+                           <table class="table table-striped">
+                             <thead>
+                               <th>Gefahrstoff</th>
+                               <th>Durchbruchzeit bei 23 Grad Celsius</th>
+                               <th tal:condition="view/editable">Aktion</th>
+                             <thead>
+                             <tbody>
+                               <tr tal:repeat="stoff view/gefahrstoffschutz">
+                                 <td tal:content="stoff/gefahrstoff"/>
+                                 <td tal:content="stoff/zeit"/>
+                                 <td tal:condition="view/editable">
+                                   <a href="" tal:attributes="href python:context.absolute_url()+'/delgs?gs='+stoff.get('gsid')">entfernen</a>
+                                 </td>
+                               </tr>
+                             </tbody>
+                           </table>
+                           <a tal:condition="view/editable" class="btn btn-default" href="#" 
+                              tal:attributes="href python:context.absolute_url()+'/addgs'" role="button">Gefahrstoff hinzufügen</a>
+                        </div>
+                      </div>
+
+
+
+
+
+
+                  </div>
+               </div>
+
+
+	    <div tal:condition="view/tabmechanik" role="tabpanel" class="tab-pane" tal:attributes="class view/tabmechanik" id="profile">
+               <div class="row">
+                  <div class="row-eq-height">
+                          <div tal:condition="view/symbol388" class="col-xs-6 col-md-3 panel panel-primary panel-siguv blau">
+                          <div class="box-body">
+                            <p>&nbsp;</p>
+                            <img class="img-responsive" tal:attributes="src string:${view/symbolurl}${view/symbol388}">
+                            <p style="text-align:center;font-size:120%;font-weight:bold" tal:condition="view/results388" 
+                               tal:content="view/results388"/>
+                            <h4 class="blau" tal:content="view/typ388">EN 388</h4>
+                            <p style="padding-left:10px">Schutz gegen mechanische Risiken</p>
+                          </div>
+                          </div>
+                  </div>
+
+
+                      <button tal:condition="view/testtable" class="btn btn-primary" type="button" data-toggle="collapse" data-target="#TestTabelle" 
+                              aria-expanded="false" aria-controls="TestTabelle">Details anzeigen</button>
+                      <div tal:condition="view/testtable" class="collapse" id="TestTabelle">
+                        <div class="well">
+                           <span tal:replace="structure view/testtable"/>
+                        </div>
+                      </div>
+
+
+
+
+
+
+               </div>  
+            </div>
+	  </div>
+
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        <!--<div class="row"><span tal:replace="structure view/beschreibung"/></div>-->
+                                        <!--<p></p>
+				       	<div>
+  						<input type="checkbox"  class="read-more-state" id="post-1" />
+
+  						<p class="read-more-wrap"><span tal:replace="view/kurzbeschreibung"/>
+					        <span class="read-more-target"><span tal:replace="structure view/beschreibung"/></span>
+						</p>
+  						<label for="post-1" class="read-more-trigger"></label>
+				   	</div>-->
+				    </div>
+
+				    <!--<div tal:condition="view/downloads" class="col-lg-12 col-sm-12 col-xs-12">
+                                        <h4 class="mp-headline">Downloads</h4>
+                                        <span tal:repeat="download view/downloads">
+                                        <p class="col-lg-5 col-sm-2 col-xs-3"><a tal:attributes="href download/url" tal:content="download/name"> </a>
+                                        </p>
+                                        <p class="col-lg-4 col-sm-10 col-xs-9 mp-download-files"><span tal:content="download/werte"/>
+				          <a tal:attributes="href download/url"><span class="glyphicon glyphicon-save"/></a></p>
+                                        </span>
+                                    </div>-->
+
+		</div>
+
+	</div>
+  </metal:block>
+
+</html>

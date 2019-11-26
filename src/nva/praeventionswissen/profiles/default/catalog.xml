@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<object name="portal_catalog">
+    <index name="Gefahrstoffe" meta_type="KeywordIndex">
+        <indexed_attr value="getGefahrstoffe"/>
+    </index>
+    <index name="Biogefahr" meta_type="KeywordIndex">
+        <indexed_attr value="getBiogefahr"/>
+    </index>
+    <index name="Mechanik" meta_type="BooleanIndex">
+        <indexed_attr value="getMechanik"/>
+    </index>
+    <index name="Thermisch" meta_type="BooleanIndex">
+        <indexed_attr value="getThermisch"/>
+    </index>
+    <index name="Biologisch" meta_type="BooleanIndex">
+        <indexed_attr value="getBiologisch"/>
+    </index>
+    <index name="Viren" meta_type="BooleanIndex">
+        <indexed_attr value="getViren"/>
+    </index>
+    <index name="Chemiekalienschutz" meta_type="BooleanIndex">
+        <indexed_attr value="getChemiekalienschutz"/>
+    </index>
+    <index name="Abrieb" meta_type="KeywordIndex">
+        <indexed_attr value="getAbrieb"/>
+    </index>
+    <index name="Schnittcoup" meta_type="KeywordIndex">
+        <indexed_attr value="getSchnittcoup"/>
+    </index>
+    <index name="Rissfestigkeit" meta_type="KeywordIndex">
+        <indexed_attr value="getRiss"/>
+    </index>
+    <index name="Durchstich" meta_type="KeywordIndex">
+        <indexed_attr value="getStich"/>
+    </index>
+    <index name="Schnittiso" meta_type="KeywordIndex">
+        <indexed_attr value="getSchnittiso"/>
+    </index>
+    <index name="Stossfestigkeit" meta_type="BooleanIndex">
+        <indexed_attr value="getStoss"/>
+    </index>
+    <index name="Hautschutzmittel" meta_type="KeywordIndex">
+        <indexed_attr value="getHautschutzmittel"/>
+    </index> 
+    <column value="getHautschutzmittel"/>
+    <index name="Tastsinn" meta_type="FieldIndex">
+        <indexed_attr value="getTastsinn"/>
+    </index>
+    <index name="Stulpenlaenge" meta_type="FieldIndex">
+        <indexed_attr value="getStulpenlaenge"/>
+    </index>
+    <index name="Hersteller" meta_type="FieldIndex">
+        <indexed_attr value="getHersteller"/>
+    </index>
+</object>

@@ -1,0 +1,71 @@
+<div class="row">
+  <h1>Ergebnisse Ihrer Suche</h1>
+  <p class="documentDescription">Für die Sortierung wurde ein Index über die erzielten Testergebnisse gebildet.
+   Die Sortierung erfolgt aufsteigend. Bitte beachten Sie die folgenden Hinweise:</p>
+  <ul>
+   <li>Alle gezeigten Produkte erfüllen Ihre Mindestanforderungen</li>
+   <li>Produkte mit einem möglichst feinen Handgefühl finden Sie oben in der Liste</li>
+   <li>Produkte mit einer möglichst hohen mechanischen Beständigkeit stehen unten in der Liste</li>
+   <li>Sie können die Sortierung jederzeit umkehren</li> 
+  </ul>
+  <p>Für einen Produktvergleich markieren Sie bitte die gewünschten Produkte</p>
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Auswahl</th>
+          <th>Produktname</th>
+          <th>Bild</th>
+          <th>
+          <form action="@@mechanikergebnisse">
+          <span tal:repeat="formentry view/resultform">
+              <input type="hidden" tal:attributes="name formentry/name; value formentry/value">
+          </span>
+          <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" 
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    Testergebnisse<span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1"> 
+              <li style="color:#004994;">
+                <input type="radio" id="sf" name="sortierung" 
+                       value="False" tal:attributes="checked view/sf">
+                    <label for="sf">Sortierung nach Handgefühl</label></li>
+              <li style="color:#004994;">
+                <input type="radio" id="st" name="sortierung" value="True" tal:attributes="checked view/st">
+                    Sortierung nach Schutzindex</li>
+              <li role="separator" class="divider"></li>
+              <li><input type="submit" value="sortieren" class="btn btn-primary"></li>
+            </ul>
+          </div>
+          </form>
+
+          </th>
+        </tr>
+      </thead>
+      <form action="@@compareproducts" tal:attributes="action view/formurl">
+      <tbody>
+        <tr tal:repeat="entry view/produktlist">
+          <td><input class="form-control" type="checkbox" name="produkt" tal:attributes="value entry/uid"></td>
+          <td><a tal:attributes="href entry/url" tal:content="entry/title"/></td>
+          <td tal:content="structure entry/image"></td>
+          <td>
+              <table class="table table-bordered">
+                <tbody>
+                   <tr tal:repeat="ergebnis entry/ergebnisse">
+                     <td tal:content="python: ergebnis[0]"/><td tal:content="python: ergebnis[1]"/>
+                   </tr>
+                </tbody>
+              </table>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="5">
+            <input name="compare" class="btn btn-primary" type="submit" value="Produkte vergleichen">
+            <input name="choose" class="btn btn-primary" type="submit" value="In Hand- und Hautschutzplan übernehmen">
+          </td>
+        </tr>
+      </tbody>
+      </form>
+    </table>
+</div>

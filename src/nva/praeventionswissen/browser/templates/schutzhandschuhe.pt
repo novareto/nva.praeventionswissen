@@ -1,0 +1,20 @@
+<div class="row" tal:content="structure provider:plone.abovecontenttitle" />
+<div class="row">
+  <h2>Schutzhandschuhe</h2>
+  <p class="documentDescription">Für Ihren Hand- und Hautschutzplan haben Sie folgende Schutzhandschuhe ausgewählt.</p>
+
+  <h4>Schutzhandschuhe</h4>
+  <table class="table table-striped">
+    <thead>
+      <th>Produkt</th>
+      <th>Hersteller</th>
+    </thead>
+    <tbody>
+      <tr tal:repeat="handschuh view/schutzhandschuhe">
+        <td><a href="" tal:attributes="href handschuh/url" tal:content="handschuh/title"/></td>
+        <td><a href="" tal:attributes="href handschuh/herstellerurl" tal:content="handschuh/hersteller"/></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<a tal:attributes="href python:context.absolute_url() + '/@@gefaehrdung'" class="btn btn-primary" role="button">Aktualisieren</a>

@@ -1,0 +1,64 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="sits">
+
+      <metal:slot fill-slot="css_slot">
+          <style media="all" type="text/css">
+
+            .schema-browser {
+                    border-collapse: collapse;
+            }
+
+            .schema-browser td,
+            .schema-browser th {
+                    vertical-align: top;
+                    border: 1px solid #aaa;
+                    padding: 0.5em;
+                    text-align: left;
+            }
+
+            .default {
+                    color: green;
+            }
+
+            .mandatory {
+                    color: red;
+            }
+          </style>
+      </metal:slot>
+
+<body>
+    <metal:main fill-slot="main">
+        
+         <div class="row" tal:content="structure provider:plone.abovecontenttitle" />
+         <div class="row">
+         <h1>Schutzhandschuhe finden</h1>
+         <p class="documentDescription">Selektieren Sie hier Ihre individuelle tätigkeits- und gefahrstoffspezifische Auswahl an Schutzhandschuhen. Sie können Ihre Wahl sofort in einen Hand- und Hautschutzplan übertragen lassen.</p>
+
+         <p class=" ">Die hier gelisteten Schutzhandschuhe entsprechen den gültigen EN Prüfnormen und tragen das CE-Kennzeichen. Folgen Sie den Abfrageformularen und Sie erhalten je nach Ihren Angaben zu hautgefährdenden Tätigkeiten und/oder Gefahrstoffkontakt eine Liste mit entsprechenden Produktempfehlungen. Innerhalb dieser Liste können Sie Detailinformationen und Bezugsquellen aufrufen sowie Artikel zum Vergleich gegenüberstellen. Ihre Auswahl können Sie sofort in einen individuellen Hand- und Hautschutzplan übertragen lassen.</p>
+
+         <p>Bitte beachen Sie, dass es sich bei den ausgewiesenen Suchergebnissen um Empfehlungen handelt, die aus Ihren Angaben zu hautgefährdender Tätigkeit und Gefahrstoffkontakt resultieren. Die tatsächliche praktische Eignung der Produkte hängt demnach von Ihren Angaben ab, weshalb der Portalbetreiber keine Gewähr für die erforderliche Schutzwirkung übernehmen kann.</p>
+
+         <h2> Angaben zur Gefährdung </h2>
+         <!--<p class="documentDescription">Bitte beschreiben Sie kurz die Tätigkeit, 
+                für die ein Hand- und Hautschutzplan erstellt werden soll.</p>-->
+         <form enctype="multipart/form-data" method="post" novalidate="novalidate"
+               action="." tal:attributes="action view/formurl">
+
+              <div tal:define="widget python: view.fieldWidgets.get('form.field.gefaehrdung')">
+                   <div metal:use-macro="here/@@formmacros/macros/bootstrapfields" />
+              </div>
+
+           <div class="actions">
+             <span class="action" tal:repeat="widget view/actionWidgets">
+             <tal:widget tal:content="structure widget/render" />
+             </span>
+           </div>
+
+         </form>
+         </div>
+
+    </metal:main>
+</body>
+</html>

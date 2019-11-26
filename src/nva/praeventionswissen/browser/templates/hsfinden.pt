@@ -1,0 +1,66 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="sits">
+
+      <metal:slot fill-slot="css_slot">
+          <style media="all" type="text/css">
+
+            .schema-browser {
+                    border-collapse: collapse;
+            }
+
+            .schema-browser td,
+            .schema-browser th {
+                    vertical-align: top;
+                    border: 1px solid #aaa;
+                    padding: 0.5em;
+                    text-align: left;
+            }
+
+            .default {
+                    color: green;
+            }
+
+            .mandatory {
+                    color: red;
+            }
+          </style>
+      </metal:slot>
+
+<body>
+    <metal:main fill-slot="main">
+         <div class="row" tal:content="structure provider:plone.abovecontenttitle" />
+         <div class="row">
+         <h1>Hautschutzmittel finden</h1>
+
+         <p class="documentDescription">Selektieren Sie hier Ihre individuelle tätigkeits- und gefahrstoffspezifische Auswahl an Hautschutzmitteln. Sie können Ihre Wahl sofort in einen Hand- und Hautschutzplan übertragen lassen.</p>
+
+         <p>Für die hier gelisteten Hautschutzmittel wurden von den Herstellern die erforderlichen Wirksamkeitsnachweise erbracht und erfüllen die Kosmetikverordnung (EG) Nr. 1223/2009. Folgen Sie den Abfrageformularen und Sie erhalten je nach Ihren Angaben zu hautgefährdenden Tätigkeiten und/oder Gefahrstoffkontakt eine Liste mit entsprechenden Produktempfehlungen. Innerhalb dieser Liste können Sie Detailinformationen und Bezugsquellen aufrufen, nach bestimmten Eigenschaften filtern sowie Artikel zum Vergleich gegenüberstellen. Ihre Auswahl können Sie sofort in einen individuellen Hand- und Hautschutzplan übertragen lassen.</p>
+         <p>Bitte beachen Sie, dass es sich bei den ausgewiesenen Suchergebnissen um Empfehlungen handelt, die aus Ihren Angaben zu hautgefährdender Tätigkeit und Gefahrstoffkontakt resultieren. Die tatsächliche praktische Eignung der Produkte hängt demnach von Ihren Angaben ab, weshalb der Portalbetreiber keine Gewähr für die erforderliche Schutzwirkung übernehmen kann.</p>
+
+         <h2 tal:content="view/formtitle"> Tätigkeit mit chemischen Gefährdungen </h2>
+         <p tal:content="view/formdescription" class="documentDescription"> </p>
+         <h3>Hautschutzmittel für Ihre Tätigkeit suchen</h3>
+         <p><b>HINWEIS: Sollten Sie bei Ihrer Produktrecherche keine spezifische Gefahrstoffauswahl treffen können, 
+               lassen Sie das Feld frei, Sie erhalten dann eine Liste mit Hautschutzprodukten für wechselnde Arbeitsstoffe.</b></p>
+
+         <form enctype="multipart/form-data" method="post" novalidate="novalidate"
+               action="." tal:attributes="action view/formurl">
+
+              <div tal:define="widget python: view.fieldWidgets.get('form.field.gefahrstoffe')">
+                   <div metal:use-macro="here/@@formmacros/macros/bootstrapfields" />
+              </div>
+
+           <div class="actions">
+             <span class="action" tal:repeat="widget view/actionWidgets">
+             <tal:widget tal:content="structure widget/render" />
+             </span>
+           </div>
+
+         </form>
+         </div>
+
+    </metal:main>
+</body>
+</html>
